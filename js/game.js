@@ -25,7 +25,6 @@
   var today = dayNumber(new Date());
   var settings = load(STORAGE.settings, {
     hardMode: false,
-    dark: window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches,
     contrast: false,
   });
   var stats = load(STORAGE.stats, {
@@ -331,9 +330,7 @@
 
   function share() {
     var text = shareText(game.day, game.guesses, game.evaluations, game.status === "won", game.hardMode);
-    if (navigator.share && /Mobi|Android/i.test(navigator.userAgent)) {
-      navigator.share({ text: text }).catch(function () {});
-    } else if (navigator.clipboard) {
+    if (navigator.clipboard) {
       navigator.clipboard.writeText(text).then(
         function () { toast("Copied results to clipboard"); },
         function () { toast("Couldn't copy results"); }
@@ -358,10 +355,8 @@
   // ---------- Settings ----------
 
   function applySettings() {
-    document.body.classList.toggle("dark", !!settings.dark);
     document.body.classList.toggle("contrast", !!settings.contrast);
     $("hard-mode").checked = settings.hardMode;
-    $("dark-theme").checked = settings.dark;
     $("high-contrast").checked = settings.contrast;
   }
 
@@ -374,11 +369,6 @@
       }
       settings.hardMode = e.target.checked;
       save(STORAGE.settings, settings);
-    });
-    $("dark-theme").addEventListener("change", function (e) {
-      settings.dark = e.target.checked;
-      save(STORAGE.settings, settings);
-      applySettings();
     });
     $("high-contrast").addEventListener("change", function (e) {
       settings.contrast = e.target.checked;

@@ -54,5 +54,5 @@ test("word lists are well formed", () => {
 
 test("share text", () => {
   const t = L.shareText(5, ["crane"], [L.evaluateGuess("crane", "crane")], true, false);
-  assert.strictEqual(t, "Wordle Clone 5 1/6\n\n🟩🟩🟩🟩🟩");
+  assert.strictEqual(t, "Five Letters 5 1/6\n\n🟩🟩🟩🟩🟩");
 });

@@ -84,7 +84,7 @@ function hardModeViolation(guess, guesses, evaluations) {
 
 function shareText(day, guesses, evaluations, won, hardMode) {
   var emoji = { correct: "🟩", present: "🟨", absent: "⬛" };
-  var header = "Wordle Clone " + day + " " + (won ? guesses.length : "X") + "/" + MAX_GUESSES + (hardMode ? "*" : "");
+  var header = "Five Letters " + day + " " + (won ? guesses.length : "X") + "/" + MAX_GUESSES + (hardMode ? "*" : "");
   var rows = evaluations.map(function (row) {
     return row.map(function (s) { return emoji[s]; }).join("");
   });

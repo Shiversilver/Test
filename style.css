@@ -12,9 +12,28 @@
   --muted: #787c7e;
   --toast-bg: #1a1a1b;
   --toast-text: #ffffff;
+  --on-color: var(--on-color);
+  color-scheme: light;
 }
 
-body.dark {
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121213;
+    --text: #ffffff;
+    --border: #3a3a3c;
+    --border-filled: #565758;
+    --key-bg: #818384;
+    --key-text: #ffffff;
+    --absent: #3a3a3c;
+    --dialog-bg: #1f1f20;
+    --muted: #a0a0a2;
+    --toast-bg: #ffffff;
+    --toast-text: #1a1a1b;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
   --bg: #121213;
   --text: #ffffff;
   --border: #3a3a3c;
@@ -26,6 +45,7 @@ body.dark {
   --muted: #a0a0a2;
   --toast-bg: #ffffff;
   --toast-text: #1a1a1b;
+  color-scheme: dark;
 }
 
 body.contrast {
@@ -46,6 +66,7 @@ body {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  padding-inline: 16px;
 }
 
 header {
@@ -55,13 +76,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
+  padding-inline: 4px;
   border-bottom: 1px solid var(--border);
 }
 
 h1 {
   margin: 0;
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: 0.08em;
   font-family: Georgia, "Times New Roman", serif;
@@ -135,7 +156,7 @@ main {
 
 .tile.correct, .tile.present, .tile.absent {
   border-color: transparent;
-  color: #ffffff;
+  color: var(--on-color);
 }
 .tile.correct { background: var(--correct); }
 .tile.present { background: var(--present); }
@@ -153,14 +174,14 @@ main {
 .keyboard {
   width: 100%;
   max-width: 500px;
-  padding: 0 8px 8px;
+  padding-bottom: 8px;
   user-select: none;
 }
 
 .key-row {
   display: flex;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   margin-bottom: 8px;
 }
 
@@ -181,7 +202,7 @@ main {
   -webkit-tap-highlight-color: transparent;
 }
 .key.wide { flex: 1.5; font-size: 12px; }
-.key.correct, .key.present, .key.absent { color: #ffffff; }
+.key.correct, .key.present, .key.absent { color: var(--on-color); }
 .key.correct { background: var(--correct); }
 .key.present { background: var(--present); }
 .key.absent  { background: var(--absent); }
@@ -248,7 +269,7 @@ dialog h3 { font-size: 15px; text-transform: uppercase; text-align: center; }
 .dist-row { display: flex; align-items: center; gap: 6px; font-size: 14px; }
 .dist-bar {
   background: var(--absent);
-  color: #ffffff;
+  color: var(--on-color);
   padding: 2px 8px;
   text-align: right;
   font-weight: 700;
@@ -268,7 +289,7 @@ dialog h3 { font-size: 15px; text-transform: uppercase; text-align: center; }
   background: var(--key-bg);
   color: var(--key-text);
 }
-.game-over button.primary { background: var(--correct); color: #ffffff; }
+.game-over button.primary { background: var(--correct); color: var(--on-color); }
 .countdown { color: var(--muted); font-size: 14px; }
 
 .setting {

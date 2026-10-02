@@ -5,6 +5,7 @@
   "description": "A Wordle clone in plain HTML, CSS and JavaScript",
   "scripts": {
     "test": "node --test",
+    "build": "node build.js",
     "start": "python3 -m http.server 8000"
   },
   "license": "MIT"
