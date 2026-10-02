@@ -1,0 +1,11 @@
+{
+  "name": "wordle-clone",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Wordle clone in plain HTML, CSS and JavaScript",
+  "scripts": {
+    "test": "node --test",
+    "start": "python3 -m http.server 8000"
+  },
+  "license": "MIT"
+}

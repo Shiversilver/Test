@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Wordle Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <button class="icon-btn" id="help-btn" aria-label="How to play">?</button>
+    <h1>Wordle</h1>
+    <div class="header-right">
+      <button class="icon-btn" id="stats-btn" aria-label="Statistics">📊</button>
+      <button class="icon-btn" id="settings-btn" aria-label="Settings">⚙</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="mode-label" class="mode-label" hidden>Practice</div>
+    <div id="board" class="board" aria-label="Game board"></div>
+  </main>
+
+  <div id="keyboard" class="keyboard" aria-label="Keyboard"></div>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <!-- How to play -->
+  <dialog id="help-dialog">
+    <button class="close" aria-label="Close">×</button>
+    <h2>How to play</h2>
+    <p>Guess the word in 6 tries. Each guess must be a valid 5-letter word.</p>
+    <p>The colour of the tiles changes to show how close your guess was.</p>
+    <div class="example">
+      <div class="tile small correct">W</div><div class="tile small">E</div><div class="tile small">A</div><div class="tile small">R</div><div class="tile small">Y</div>
+    </div>
+    <p><strong>W</strong> is in the word and in the correct spot.</p>
+    <div class="example">
+      <div class="tile small">P</div><div class="tile small present">I</div><div class="tile small">L</div><div class="tile small">L</div><div class="tile small">S</div>
+    </div>
+    <p><strong>I</strong> is in the word but in the wrong spot.</p>
+    <div class="example">
+      <div class="tile small">V</div><div class="tile small">A</div><div class="tile small">G</div><div class="tile small absent">U</div><div class="tile small">E</div>
+    </div>
+    <p><strong>U</strong> is not in the word in any spot.</p>
+    <p>A new puzzle is released every day at midnight.</p>
+  </dialog>
+
+  <!-- Statistics -->
+  <dialog id="stats-dialog">
+    <button class="close" aria-label="Close">×</button>
+    <h2>Statistics</h2>
+    <div class="stats">
+      <div><span id="stat-played">0</span><label>Played</label></div>
+      <div><span id="stat-win">0</span><label>Win %</label></div>
+      <div><span id="stat-streak">0</span><label>Current streak</label></div>
+      <div><span id="stat-max">0</span><label>Max streak</label></div>
+    </div>
+    <h3>Guess distribution</h3>
+    <div id="distribution" class="distribution"></div>
+    <div id="game-over" class="game-over" hidden>
+      <p id="answer-reveal"></p>
+      <div class="buttons">
+        <button id="share-btn" class="primary">Share</button>
+        <button id="practice-btn">Practice word</button>
+      </div>
+      <p class="countdown">Next daily word in <span id="countdown">--:--:--</span></p>
+    </div>
+  </dialog>
+
+  <!-- Settings -->
+  <dialog id="settings-dialog">
+    <button class="close" aria-label="Close">×</button>
+    <h2>Settings</h2>
+    <label class="setting">
+      <span><strong>Hard mode</strong><small>Any revealed hints must be used in later guesses. Can only be changed before your first guess.</small></span>
+      <input type="checkbox" id="hard-mode">
+    </label>
+    <label class="setting">
+      <span><strong>Dark theme</strong></span>
+      <input type="checkbox" id="dark-theme">
+    </label>
+    <label class="setting">
+      <span><strong>High contrast</strong><small>For improved colour vision.</small></span>
+      <input type="checkbox" id="high-contrast">
+    </label>
+  </dialog>
+
+  <script src="js/words.js"></script>
+  <script src="js/logic.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
